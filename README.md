@@ -22,3 +22,17 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+#TODO
+
+
+1. Template
+   - [ ] Adin Dashobard add search box to product, order and user
+   - [ ] Adin Dashobard add date data to tables
+   - [ ] Adin Dashobard add date joined to user list
+   - [ ] Create customer dashboard html template
+
+2. Wireframe
+   - [ ] Remove add order from wireframe
+   - [ ] Add order status
