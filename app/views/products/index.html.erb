@@ -1,37 +1,59 @@
+
+    <style>
+      .form-block{
+      margin-top: 2%;
+      margin-bottom: 2%;
+
+      }
+      .product-grid-item{
+        padding:2%;
+      }
+      .search-form{
+        margin-top: 4%;
+        margin-bottom: 3%;
+      }
+    </style>
+
+  </head>
+
+<div class="container">
+
 <p id="notice"><%= notice %></p>
 
 <h1>Products</h1>
+    <div class="row">
+      <div class="col-md-8 mx-auto search-form">
+        <input type="text" class="form-control" placeholder="Search" for="" product="">
+      </div>
+    </div>
+    <div class="row">
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Permalink</th>
-      <th>Summary</th>
-      <th>Price</th>
-      <th>Image</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.title %></td>
-        <td><%= product.permalink %></td>
-        <td><%= product.summary %></td>
-        <td><%= product.price %></td>
-        <td><%= product.image %></td>
-        <td><%= product.description %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Product', new_product_path %>
+     <% @products.each do |product| %>
+      <div class="col-md-3 product-grid-item">
+        <div class="product-box">
+          <div class="row">
+            <img src="<%= product.image %>" alt="bag">
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h5><a href="<%= product.permalink %>"><%= product.title %></a></h5>
+            </div>
+            <div class="col-md-5"><h5><span class="badge badge-success">$<%= product.price %></span></h5></div>
+            <div class="col-md-7">
+              <button class="btn btn-primary">Add to cart</button>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <% end.empty? and begin %>
+          <h3 class="mx-auto">No Products Added Yet</h3>
+      <% end %>
+
+
+    </div>
+  </div>
+
