@@ -35,11 +35,18 @@
       <div class="col-md-3 product-grid-item">
         <div class="product-box">
           <div class="row">
-            <img src="<%= product.image %>" alt="bag">
+           
+               
+                
+                <% if product.image.attached? %>
+                  <% image_tag product.image %>
+                <% end %>    
+            
+            
           </div>
           <div class="row">
             <div class="col-md-12">
-              <h5><a href="<%= product.permalink %>"><%= product.title %></a></h5>
+              <h5><%= link_to product.title, product_path(product.id) %></h5>
             </div>
             <div class="col-md-5"><h5><span class="badge badge-success">$<%= product.price %></span></h5></div>
             <div class="col-md-7">

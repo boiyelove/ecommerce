@@ -13,32 +13,32 @@
 
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :permalink %>
-    <%= form.text_field :permalink %>
+    <%= form.text_field :permalink, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :summary %>
-    <%= form.text_field :summary %>
+    <%= form.text_field :summary, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :price %>
-    <%= form.text_field :price %>
+    <%= number_field(:product, :price, class: 'form-control col-md-6', min: 0.00, value: 1.00 , step: 0.01) %>
   </div>
 
   <div class="field">
     <%= form.label :image %>
-    <%= form.text_field :image %>
+    <%= form.file_field :image %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: 'form-control' %>
   </div>
 
   <div class="actions">
