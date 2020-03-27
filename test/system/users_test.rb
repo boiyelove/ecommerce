@@ -15,9 +15,10 @@ class UsersTest < ApplicationSystemTestCase
     click_on "New User"
 
     fill_in "Email", with: @user.email
-    fill_in "Firstame", with: @user.firstame
-    check "Isadmin" if @user.isadmin
+    fill_in "Firstname", with: @user.firstname
     fill_in "Lastname", with: @user.lastname
+    fill_in "Password", with: 'secret'
+    fill_in "Password confirmation", with: 'secret'
     click_on "Create User"
 
     assert_text "User was successfully created"
@@ -29,9 +30,10 @@ class UsersTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Email", with: @user.email
-    fill_in "Firstame", with: @user.firstame
-    check "Isadmin" if @user.isadmin
+    fill_in "Firstname", with: @user.firstname
     fill_in "Lastname", with: @user.lastname
+    fill_in "Password", with: 'secret'
+    fill_in "Password confirmation", with: 'secret'
     click_on "Update User"
 
     assert_text "User was successfully updated"

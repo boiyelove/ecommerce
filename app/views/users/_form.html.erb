@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :firstame %>
-    <%= form.text_field :firstame %>
+    <%= form.label :firstname %>
+    <%= form.text_field :firstname %>
   </div>
 
   <div class="field">
@@ -27,8 +27,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :isadmin %>
-    <%= form.check_box :isadmin %>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation %>
   </div>
 
   <div class="actions">
