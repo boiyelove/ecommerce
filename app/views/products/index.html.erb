@@ -37,7 +37,7 @@
           <div class="row">
            
                
-                
+
                 <% if product.image.attached? %>
                   <% image_tag product.image %>
                 <% end %>    
@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-5"><h5><span class="badge badge-success">$<%= product.price %></span></h5></div>
             <div class="col-md-7">
-              <button class="btn btn-primary">Add to cart</button>
+              <%= button_to 'Add to cart', order_items_path(:product_id => product.id) %>
             </div>
           </div>
         </div>

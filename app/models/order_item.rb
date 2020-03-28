@@ -1,4 +1,11 @@
 class OrderItem < ApplicationRecord
+	belongs_to :cart
+	belongs_to :product
 	belongs_to :order
-	has_and_belongs_to_many :products
+
+
+	def total_price
+		self.quantity * self.product.price
+    end
+
 end

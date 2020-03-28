@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @order = Order.find(params[:id])
   end
 
   # GET /orders/new
@@ -18,14 +19,22 @@ class OrdersController < ApplicationController
   end
 
   # GET /orders/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /orders
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-
+    @current_cart.order_items.each do |item|
+      @oeswe.order_items << item
+      item.cart_id = nil
+    end
+    @order.save
+    Cart.destroy(session[:cart_id])
+    session[:cart_id] = nil
+  #   redirect_to root_path
+  # end
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
