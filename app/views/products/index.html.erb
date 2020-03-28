@@ -20,14 +20,25 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
+
     <div class="row">
       <div class="col-md-8 mx-auto search-form">
         <%= form_with(url: products_path,  method: "get", local: true) do %>
-        <%= text_field_tag(:search, '',class:"form-control", placeholder:"Search")%>
-        <br>
-        <%= submit_tag ('search') %>
+        <div class="row">
+                  <%= text_field_tag(:search, params[:search],class:"form-control", placeholder:"Search")%>
+        </div>
+
+         <br>
+        <div class="row">
+
+              <div class="col-md-6 text-right">
+             <%= submit_tag ('search'), class: "btn btn-primary col-md-6" %>
+              </div>
+
         <% end %>
+        </div>
+       
+
       </div>
     </div>
     <div class="row">

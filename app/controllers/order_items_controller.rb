@@ -22,7 +22,7 @@ class OrderItemsController < ApplicationController
   end
 
   def add_quantity
-    @order_item  OrderItem.find(params[:id])
+    @order_item = OrderItem.find(params[:id])
     @order_item.quantity += 1
     order_item.save
     redirect_to cart_path(@current_cart)

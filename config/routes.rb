@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   post 'order_items' => "order_items#create"
   get 'order_items/:id' => "order_items#show", as: "order_item"
   delete 'order_items/:id' => "order_items#destroy"
-
-  get 'search' => 'products#search', as: 'search'
+  
   # get 'sessions/new'
   # get 'sessions/create'
   # get 'sessions/destroy'

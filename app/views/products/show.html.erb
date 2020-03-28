@@ -1,39 +1,94 @@
-<p id="notice"><%= notice %></p>
+<!doctype html>
+<html lang="en">
+  <head>
 
-<p>
-  <strong>Title:</strong>
-  <%= @product.title %>
-</p>
+    <title><%= @product.title %></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<p>
-  <strong>Permalink:</strong>
-  <%= @product.permalink %>
-</p>
+    <!-- Bootstrap CSS Offline -->
+    <link rel="stylesheet" href="http://cdn.local//node_modules/bootstrap/dist/css/bootstrap.min.css">
 
-<p>
-  <strong>Summary:</strong>
-  <%= @product.summary %>
-</p>
+    <!-- Font Awesome Offline -->
+    <link rel="stylesheet" href="http://cdn.local//node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css">
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
 
-<p>
-  <strong>Image:</strong>
-    <% if @product.image.attached? %>
-    <% image_tag @product.image %>
-  <% end %>
+    <!-- Bootstrap CSS and Font Awesome CDN-->
+  <!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <style>
+      .form-block{
+      margin-top: 2%;
+      margin-bottom: 2%;
+
+      }
+      .product-grid-item{
+        padding:2%;
+      }
+      .search-form{
+        margin-top: 4%;
+        margin-bottom: 3%;
+      }
+    </style>
+
+  </head>
+  <body>
+    
+<div class="container">
+  <div class="row">
+    <p id="notice"><%= notice %></p>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <% if @product.image.attached? %>
+        <% image_tag @product.image %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-6">
+          <%= link_to 'Edit', edit_product_path(@product) %>
+        </div>
+        <div class="col-md-6">
+          <%= link_to 'Back', products_path %>
+        </div>
+      </div>
+      <div class="row form-block">
+        <h2> <%= @product.title %></h2>
+      </div>
+      <div class="row form-block"><h3><%= @product.price %></h3>$</div>
+      <div class="row form-block">
+        <div class="form-inline">
+          <label for="">Quantity</label>
+          <input type="number" class="form-control" min=1 default=1>
+        </div>
+      </div>
+              <div class="row form-block">
+        <%= button_to 'Add to cart', order_items_path(:product_id => @product.id), class: "btn btn-primary"  %>
+          
+        </div>
+
+
+    </div>
+  </div>
   <br>
-      <%= @product.image %>        
+  <br>
+  <div class="row">
+    <%= @product.description %>
+</div>
+    <!-- Optional JavaScript Offline-->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="http://localhost/repo/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="http://localhost/repo/bower_components/bootstrap4/assets/js/vendor/popper.min.js"></script>
+    <script src="http://cdn.local//node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+    <!-- Optional JavaScript Online CDN -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script> -->
+  </body>
+</html>
