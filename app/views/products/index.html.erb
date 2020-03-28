@@ -30,8 +30,12 @@
 
          <br>
         <div class="row">
-
-              <div class="col-md-6 text-right">
+          <% if params.has_key? 'search' %>
+            <div class="-col-md-6">
+             <%= link_to('back to All Products', products_path) %>
+          </div>
+            <% end %>
+              <div class="col-md-6">
              <%= submit_tag ('search'), class: "btn btn-primary col-md-6" %>
               </div>
 
