@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'cart/add_to_cart'
-  get 'cart/remove_from_cart'
-  get 'cart/clear_cart'
 
   get 'cart' => "cart#show", as: "cart"
   delete 'cart/:id' => "cart#destroy"
@@ -12,7 +9,7 @@ Rails.application.routes.draw do
   get 'order_items/:id' => "order_items#show", as: "order_item"
   delete 'order_items/:id' => "order_items#destroy"
 
-
+  get 'search' => 'products#search', as: 'search'
   # get 'sessions/new'
   # get 'sessions/create'
   # get 'sessions/destroy'

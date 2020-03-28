@@ -4,7 +4,13 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    if params[:search]
+      @parameter = params[:search].downcase
+      @products = Product.all.where("title like '%%#{@parameter}%%'")
+     
+    else
+      @products = Product.all
+    end
   end
 
   # GET /products/1
@@ -38,6 +44,7 @@ class ProductsController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
@@ -73,6 +80,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:title, :permalink, :summary, :price, :image, :description)
+      params.require(:product).permit(:search, :title, :price, :image, :description)
     end
 end
