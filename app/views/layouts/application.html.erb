@@ -10,20 +10,46 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script type="text/javascript" src="http://cdn.local//node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+    <style>
+      .form-block{
+      margin-top: 2%;
+      margin-bottom: 2%;
+
+      }
+      .product-grid-item{
+        padding:2%;
+      }
+      .search-form{
+        margin-top: 4%;
+        margin-bottom: 3%;
+      }
+      #content{
+        margin-top: 2%;
+      }
+    </style>
+
+  </head>
+
+
   </head>
 
   <body style="margin: 0; padding: 0;">
   
     <nav class="navbar navbar-dark bg-dark">
       <div class="container">
-             <a href="#" class="navbar-brand">Ecommerce</a>
+             <%= link_to('Ecommerce', products_path, class: 'navbar-brand') %>
+           
     <ul class="navbar nav">
-      <li class="nav-item"><a href="#" class="nav-link text-white">Login</a></li>
-      <li class="nav-item"><a href="#" class="nav-link text-white">View Cart</a></li>
+      <li class="nav-item"><%= link_to('Login', login_path, class: "nav-link text-white") %></li>
+      <li class="nav-item"><%= link_to('View Cart', cart_path, class: "nav-link text-white") %></li>
     </ul> 
       </div>
 
     </nav>
-    <%= yield %>
+   <div id="content" class="container">
+      <%= yield %>
+   </div>
   </body>
 </html>

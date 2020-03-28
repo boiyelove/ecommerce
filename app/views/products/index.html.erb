@@ -1,26 +1,8 @@
 
-    <style>
-      .form-block{
-      margin-top: 2%;
-      margin-bottom: 2%;
-
-      }
-      .product-grid-item{
-        padding:2%;
-      }
-      .search-form{
-        margin-top: 4%;
-        margin-bottom: 3%;
-      }
-    </style>
-
-  </head>
-
-<div class="container">
 
 <p id="notice"><%= notice %></p>
 
-
+  <h2>Products</h2>
     <div class="row">
       <div class="col-md-8 mx-auto search-form">
         <%= form_with(url: products_path,  method: "get", local: true) do %>
@@ -81,5 +63,4 @@
 
 
     </div>
-  </div>
 
