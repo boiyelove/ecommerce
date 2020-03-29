@@ -1,13 +1,9 @@
 class AdminController < ApplicationController
   before_Action :is_admin
+  
   def dashboard
   end
 
-  def products
-  	@products = ProductController::index::products
-  	# @products = Product.all
-  	# render file: "admin/admin_products.html", layout: false, status: 404
-  end
 
   def is_admin
     unless @current_user.is_admin
