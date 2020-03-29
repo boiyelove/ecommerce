@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'admin/dashboard'
+  # get 'admin/products' => 'products#index'
+
   get 'cart' => "cart#show", as: "cart"
   delete 'cart/:id' => "cart#destroy"
 
@@ -24,5 +27,9 @@ Rails.application.routes.draw do
   resources :products
 
   root :to => 'products#index'
+
+  scope "/admin", admin_scope: true do
+    resources :products, :orders, :users
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -4,13 +4,15 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    puts "admin_scope is #{params[:admin_scope]}"
     if params[:search]
       @parameter = params[:search].downcase
       @products = Product.all.where("title like '%%#{@parameter}%%'")
-     
     else
       @products = Product.all
     end
+    render "admin/products" if params[:admin_scope].eql? true
+
   end
 
   # GET /products/1

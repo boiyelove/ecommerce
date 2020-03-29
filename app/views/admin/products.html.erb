@@ -1,0 +1,46 @@
+<div class="row">
+		<div class="col-md-4">
+			<ul class="list-group">
+				<a href="#" class="list-group-item list-group-item-action active">Dashboard</a>
+				<a href="#" class="list-group-item list-group-item-action">Products</a>
+				<a href="#" class="list-group-item list-group-item-action">Orders</a>
+				<a href="#" class="list-group-item list-group-item-action">Users</a>
+				<a href="#" class="list-group-item list-group-item-action">Settings</a>
+				<a href="#" class="list-group-item list-group-item-action">Logout</a>
+			</ul>
+		</div>
+
+		<div class="col-md-8">
+			<h4>All Products</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col" colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+           <% @products.each do |product| %>
+        	 <tr>
+            <td scope="row"></td>
+            <td><%= link_to product.title, product_path(product.id) %></td>
+            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae</td>
+            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur assumenda, nam laborum cupiditate soluta corporis ipsum illum dolores! Alias nostrum error expedita recusandae dolorem quos quo sequi, ab repellat quisquam.</td>
+            <td><span class="badge badge-success">$<%= product.price %></span></td>
+            <td><%= link_to('Edit', product_path(product.id)) %></td>
+            <td><%= link_to('Delete', product_path(product.id)) %></td>
+          </tr>
+  
+        
+
+
+     	 <% end %>
+
+
+        </tbody>
+      </table>
+		</div>
+	</div>

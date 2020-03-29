@@ -42,7 +42,17 @@
              <%= link_to('Ecommerce', products_path, class: 'navbar-brand') %>
            
     <ul class="navbar nav">
-      <li class="nav-item"><%= link_to('Login', login_path, class: "nav-link text-white") %></li>
+      <li class="nav-item">
+      <% if current_user %>
+        <%= current_user.email %> 
+        <%= link_to('Log Out', logout_path, class: "nav-link text-white") %>
+      <% else %>
+        <%= link_to('Login', login_path, class: "nav-link text-white") %>
+      <% end %>
+
+
+      </li>
+
       <li class="nav-item"><%= link_to('View Cart', cart_path, class: "nav-link text-white") %></li>
     </ul> 
       </div>
@@ -53,3 +63,4 @@
    </div>
   </body>
 </html>
+

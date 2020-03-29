@@ -3,4 +3,11 @@
 <%= render 'form', product: @product %>
 
 <%= link_to 'Show', @product %> |
+
+<% if is_user_admin? %>
+	<%= link_to 'Back', admin_products_path %>
+
+<% else %>
 <%= link_to 'Back', products_path %>
+
+<% end %>
