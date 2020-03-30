@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_30_214747) do
+ActiveRecord::Schema.define(version: 2020_03_30_230033) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -55,7 +55,8 @@ ActiveRecord::Schema.define(version: 2020_03_30_214747) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "address"
+    t.integer "payment_info_id"
+    t.index ["payment_info_id"], name: "index_orders_on_payment_info_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -64,13 +65,11 @@ ActiveRecord::Schema.define(version: 2020_03_30_214747) do
     t.string "card_exp"
     t.integer "card_pin"
     t.integer "user_id", null: false
-    t.integer "order_id", null: false
     t.string "address"
     t.string "state"
     t.string "country"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "index_payment_infos_on_order_id"
     t.index ["user_id"], name: "index_payment_infos_on_user_id"
   end
 
@@ -97,7 +96,7 @@ ActiveRecord::Schema.define(version: 2020_03_30_214747) do
   add_foreign_key "order_items", "carts"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
+  add_foreign_key "orders", "payment_infos"
   add_foreign_key "orders", "users"
-  add_foreign_key "payment_infos", "orders"
   add_foreign_key "payment_infos", "users"
 end
