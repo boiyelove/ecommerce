@@ -1,0 +1,74 @@
+<div class="row">
+		<div class="col-md-8">
+			
+		<h4>Payment Information</h4>
+		<%= form_tag cart_path do |form| %>
+		<div class="row form-block">
+			    <%= label_tag :card_number %>
+    			<%= text_field_tag :card_number, "",class: 'form-control' %>
+		</div>
+		<div class="row form-block">
+			<div class="col-md-3">
+				<%= label_tag :card_exp %>
+				<%= text_field_tag :card_number, "",class: 'form-control', placeholder:"MM/YY" %>
+			</div>
+			<div class="col-md-3">
+				<%= label_tag :card_pin %>
+				<%= text_field_tag :card_pin, "",class: 'form-control', placeholder:"CCV" %>
+			</div>
+		</div>
+
+	<% if current_user %>
+	Logged In
+
+	<% else %>
+
+	<ul class="nav nav-tabs" id="myTab" role="tablist">
+	  <li class="nav-item">
+	    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Login</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Register</a>
+	  </li>
+	</ul>
+	<div class="tab-content" id="myTabContent">
+	  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">.Login Here</div>
+	  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Register Here</div>
+	</div>
+	Not Logged in
+	Login/Register
+
+	<% end %>
+
+	<hr width="80%" align="left">
+	<h4>Shipping Information</h4>
+
+
+	 <div class="row form-block">
+		<%= label_tag :address %>
+    	<%= text_field_tag :address, "",class: 'form-control' %>	</div>
+
+	<div class="row form-block">
+		<div class="col-md-6">
+			<label>State</labe>
+		<input type="text" class="form-control" placehodler="">
+
+		</div>
+		<div class="col-md-6">
+			<%= label_tag :country %>
+			<%= select_tag "country",options_from_collection_for_select(@countries, "number", "name"), class: "form-control" %>
+
+		</div>
+	</div>
+	<div class="row form-block">
+		<button class="btn btn-primary col-md-6">Complete Order</button>
+	</div>
+
+	<% end %>
+
+	</div>
+	<div class="col-md-4 text-right">
+		<h2><small>Total:</small> <%= number_to_currency(@cart.sub_total) %></h2>
+		<h4><small>Item(s):</small> <%= @cart.total_quantity %> </h4>
+	</div>
+	</div>

@@ -19,6 +19,11 @@ class CartController < ApplicationController
   	@cart = @current_cart
   end
 
+  def checkout
+    @cart = @current_cart
+    @countries = ISO3166::Country.all
+  end
+
   def destroy
   	@cart = @current_cart
   	@cart.destroy

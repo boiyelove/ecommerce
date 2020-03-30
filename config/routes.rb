@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'admin/dashboard'
   # get 'admin/products' => 'products#index'
 
+  post 'checkout' => "cart#checkout", as: "checkout"
+  get 'checkout' => "cart#show"
   get 'cart' => "cart#show", as: "cart"
   delete 'cart/:id' => "cart#destroy"
 
