@@ -9,5 +9,13 @@ class Cart < ApplicationRecord
 		end
 		return sum
 	end
+
+	def total_quantity
+		sum = 0
+		self.order_items.each do|order_item|
+			sum += order_item.quantity
+		end
+		return sum
+	end
 	
 end
