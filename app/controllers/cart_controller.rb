@@ -22,6 +22,10 @@ class CartController < ApplicationController
   def checkout
     @cart = @current_cart
     @countries = ISO3166::Country.all
+    @user = User.new
+    if session[:user_id].nil?
+      session[:welcome_path] = cart_path
+    end
   end
 
   def destroy

@@ -25,9 +25,18 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
+        if !is_user_admin?
+          session[:user_id] = @user.id
+          if session[:welcome_path].present?
+            destinationpath = session[:welcome_path]
+            session[:welcome_path] = nil
+            redirect_to destinationpath, notice: "Account created successfully, Please complete your order!"
+            return
+          end
+        end
+
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else

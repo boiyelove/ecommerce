@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_30_020243) do
+ActiveRecord::Schema.define(version: 2020_03_30_213429) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -58,6 +58,21 @@ ActiveRecord::Schema.define(version: 2020_03_30_020243) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "payment_infos", force: :cascade do |t|
+    t.integer "card_number"
+    t.string "card_exp"
+    t.integer "card_pin"
+    t.integer "user_id", null: false
+    t.integer "order_id", null: false
+    t.string "address"
+    t.string "state"
+    t.string "country"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_payment_infos_on_order_id"
+    t.index ["user_id"], name: "index_payment_infos_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.decimal "price", precision: 10, scale: 2
@@ -82,4 +97,6 @@ ActiveRecord::Schema.define(version: 2020_03_30_020243) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "users"
+  add_foreign_key "payment_infos", "orders"
+  add_foreign_key "payment_infos", "users"
 end
