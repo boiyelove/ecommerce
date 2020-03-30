@@ -25,7 +25,7 @@ class OrderItemsController < ApplicationController
     @order_item = OrderItem.find(params[:id])
     @order_item.quantity += 1
     @order_item.save!
-    redirect_to cart_path(@current_cart)
+    redirect_to cart_path
   end
 
   def reduce_quantity
@@ -34,7 +34,7 @@ class OrderItemsController < ApplicationController
       @order_item.quantity -= 1
     end
     @order_item.save
-    redirect_to cart_path(@current_cart)
+    redirect_to cart_path
   end
   # POST /order_items
   # POST /order_items.json
@@ -59,7 +59,7 @@ class OrderItemsController < ApplicationController
     # puts "current_cart is #{@current_cart}"
     # puts "current_cart is #{@current_cart.id}"
     # puts "its items are #{@current_cart.order_items}"
-    redirect_to cart_path(@current_cart)
+    redirect_to cart_path
     # @order_item = OrderItem.new(order_item_params)
 
     # respond_to do |format|
@@ -97,7 +97,7 @@ class OrderItemsController < ApplicationController
     # end
       @order_item = OrderItem .find(params[:id])
       @order_item.destroy
-      redirect_to cart_path(@current_cart)
+      redirect_to cart_path
   end
 
   private
