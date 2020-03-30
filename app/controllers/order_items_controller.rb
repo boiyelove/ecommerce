@@ -24,13 +24,13 @@ class OrderItemsController < ApplicationController
   def add_quantity
     @order_item = OrderItem.find(params[:id])
     @order_item.quantity += 1
-    order_item.save
+    @order_item.save!
     redirect_to cart_path(@current_cart)
   end
 
   def reduce_quantity
-    @line_item = OrderItem.find(params[:id])
-    if @order_item.quaantity > 1
+    @order_item = OrderItem.find(params[:id])
+    if @order_item.quantity > 1
       @order_item.quantity -= 1
     end
     @order_item.save
@@ -45,12 +45,17 @@ class OrderItemsController < ApplicationController
     if current_cart.products.include?(selected_product)
       @order_item = current_cart.order_items.find_by(:product_id => selected_product)
       @order_item.quantity += 1
+      puts "this old order item is #{@order_item}"
+      @order_item.save
     else
-      @order_item = OrderItem.new
-      @order_item.cart = current_cart
-      @order_item.product = selected_product
+      @order_item = OrderItem.create!(cart: current_cart, quantity: 1, product: selected_product )
+      # @order_item.cart = current_cart
+      # @order_item.quantity = 1
+      # @order_item.product = selected_product
+      puts "this new order item is #{@order_item}"
+      puts "this new id order item is #{@order_item.id}"
     end
-    @order_item.save
+    
     puts "current_cart is #{@current_cart}"
     puts "current_cart is #{@current_cart.id}"
     puts "its items are #{@current_cart.order_items}"

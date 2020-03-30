@@ -1,11 +1,10 @@
 class OrderItem < ApplicationRecord
-	belongs_to :cart
-	belongs_to :product
-	belongs_to :order, optional: true
+  belongs_to :product
+  belongs_to :cart
+  belongs_to :order, optional: true
 
 
-	def total_price
-		self.quantity * self.product.price
-    end
-
+  def total_price
+	self.quantity * self.product.price
+  end
 end

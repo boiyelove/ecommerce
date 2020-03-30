@@ -32,9 +32,9 @@
 					<td>$<%= number_to_currency(order_item.product.price) %></td>
 					<td>x<%= order_item.quantity %> </td>
 					<td>$<%= number_to_currency(order_item.total_price) %></td>
-					<td><%= link_to "Add one", order_item_add_path(:id => order_item), method: post %></td>
-					<td><%= link_to "Reduce one", order_item_reduce_path(:id => order_item), method: post %></td>
-					<td><%= link_to "Remove Item", order_item_add_path(:id => order_item), method: :delete %></td>
+					<td><%= link_to "Add one", order_item_add_path(:id => order_item), method: "post" %></td>
+					<td><%= link_to "Reduce one", order_item_reduce_path(:id => order_item), method: "post" %></td>
+					<td><%= link_to "Remove Item", order_item_path(:id => order_item), method: :delete %></td>
 				</tr>
 						
 				<% end %>			
