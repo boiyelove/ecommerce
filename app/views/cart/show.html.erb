@@ -12,7 +12,7 @@
 	</div>
 	</div>
 	<div class="row">
-		<p>	Cart Items Is <%= puts @cart.order_items %></p>
+		<p>	Cart Items Is <%= puts @current_cart.order_items %></p>
 		<table class="table">
 			<thead>
 				<tr>
@@ -25,7 +25,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<%=  @cart.order_items.each do |order_item| %>
+				<%=  @current_cart.order_items.each do |order_item| %>
 					<tr>
 					<th scope="row">#</th>
 					<td><%= order_item.product.title %></td>

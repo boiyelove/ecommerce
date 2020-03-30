@@ -25,6 +25,15 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    # def current_cart
+    #   if session[:cart].present?
+    #     @current_cart = cart
+    #   else
+
+    #     session[:cart] = Hash.new
+    #   end
+    # end
+
     def only_admin
       # render file: "#{Rails.root}/public/404.html", layout: false, status: 404 if session['user_id'].nil? or (session['user_id'].present? && session['user_id'].is_admin?)
       puts "I say render by force naw!"

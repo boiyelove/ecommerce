@@ -41,7 +41,7 @@ class OrderItemsController < ApplicationController
   def create
     selected_product = Product.find(params[:product_id])
     current_cart = @current_cart
-    puts current_cart.products
+    # puts current_cart.products
     if current_cart.products.include?(selected_product)
       @order_item = current_cart.order_items.find_by(:product_id => selected_product)
       @order_item.quantity += 1
@@ -51,7 +51,10 @@ class OrderItemsController < ApplicationController
       @order_item.product = selected_product
     end
     @order_item.save
-    redirect_to cart_path(current_cart)
+    puts "current_cart is #{@current_cart}"
+    puts "current_cart is #{@current_cart.id}"
+    puts "its items are #{@current_cart.order_items}"
+    redirect_to cart_path(@current_cart)
     # @order_item = OrderItem.new(order_item_params)
 
     # respond_to do |format|
