@@ -46,5 +46,9 @@ test:
   database: ecommerce_testdb
 
 production:
-  <<: *default
-  database: ecommerce_db
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+  url: postgresql-objective-54185
+  
