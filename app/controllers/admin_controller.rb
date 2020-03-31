@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_Action :is_admin
+  before_action :is_admin
 
   def dashboard
   	@products = Products.all
