@@ -55,4 +55,6 @@ gem "chartkick"
 
 gem "countries"
 
+gem 'rails_12factor', group: :production
+
 # gem 'faker'
