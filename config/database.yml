@@ -50,5 +50,6 @@ production:
   encoding: unicode
   pool: 5
   timeout: 5000
-  url: postgresql-objective-54185
+  url: postgres://jstyidakxlgogi:0a32fa71b852ca1ef2b9946a753b78f8582ca57106f4beb66c7b36399173fab8@e
+c2-18-213-176-229.compute-1.amazonaws.com:5432/d1arc2tc17s90o
   
