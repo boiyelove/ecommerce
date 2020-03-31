@@ -55,4 +55,4 @@ gem "chartkick"
 
 gem "countries"
 
-gem 'faker'
+# gem 'faker'
