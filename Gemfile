@@ -53,6 +53,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "chartkick"
 
+gem 'groupdate'
+
 gem "countries"
 
 gem 'rails_12factor', group: :production
@@ -60,3 +62,8 @@ gem 'rails_12factor', group: :production
 gem 'faker'
 
 gem "smarter_csv"
+
+gem 'will_paginate', '~> 3.1.0'
+
+gem 'gmaps4rails'
+

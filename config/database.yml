@@ -46,7 +46,9 @@ development:
 test:
   <<: *default
   database: ecommerce_testdb
-
+  user: postgres
+  password: postgres
+  
 production:
   <<: *default
   database: postgresql-objective-54185

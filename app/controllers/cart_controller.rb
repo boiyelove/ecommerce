@@ -29,20 +29,23 @@ class CartController < ApplicationController
     if session[:user_id].nil?
       session[:welcome_path] = cart_path
     end
-    if session[:user_id].present?
+    if session[:user_id].present? && params[:checkout]
       user = User.find(session[:user_id])
+      payinfo = PaymentInfo.find(user_id = user.id).first
+      if payinfo and payinfo.card_number == @payinfo.card_number
+        @payinfo = payinfo
+      else
+        #store payment information
+        @payinfo.card_number = params[:card_number]
+        @payinfo.card_exp = params[:card_exp]
+        @payinfo.card_pin = params[:card_pin]
+        @payinfo.address = params[:address]
+        @payinfo.state = params[:state]
+        @payinfo.country = params[:country]
 
-      #store payment information
-      @payinfo.card_number = params[:card_number]
-      @payinfo.card_exp = params[:card_exp]
-      @payinfo.card_pin = params[:card_pin]
-      @payinfo.address = params[:address]
-      @payinfo.state = params[:state]
-      @payinfo.country = params[:country]
-
-      @payinfo.user = user
-      @payinfo.save!
-
+        @payinfo.user = user
+        @payinfo.save!
+      end
       #create order
       @order = Order.new
       @current_cart.order_items.each do |item|

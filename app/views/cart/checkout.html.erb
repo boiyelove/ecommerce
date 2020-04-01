@@ -18,19 +18,30 @@
 		<div class="col-md-6">
 			<h4>Payment Information</h4>
 		<br>
-		<%= form_tag checkout_path do |form| %>
+		<%= form_with model: @payinfo, local: true, url: checkout_path do |form| %>
+		<% if @payinfo.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
+
+	      <ul>
+	        <% user.errors.full_messages.each do |message| %>
+	          <li><%= message %></li>
+	        <% end %>
+	      </ul>
+	    </div>
+				  <% end %>
 		<div class="row form-block">
 			    <%= label_tag :card_number %>
-    			<%= text_field_tag :card_number, "",class: 'form-control' %>
+    			<%= form.text_field :card_number, class: 'form-control' %>
 		</div>
 		<div class="row form-block">
 			<div class="col-md-4">
 				<%= label_tag :card_exp %>
-				<%= text_field_tag :card_exp, "",class: 'form-control', placeholder:"MM/YY" %>
+				<%= form.text_field :card_exp, class: 'form-control', placeholder:"MM/YY" %>
 			</div>
 			<div class="col-md-4">
 				<%= label_tag :card_pin %>
-				<%= text_field_tag :card_pin, "",class: 'form-control', placeholder:"CCV" %>
+				<%= form.text_field :card_pin, class: 'form-control', placeholder:"CCV" %>
 			</div>
 		</div>
 		<br>
@@ -40,24 +51,24 @@
 
 		 <div class="row form-block">
 			<%= label_tag :address %>
-	    	<%= text_field_tag :address, "",class: 'form-control' %>
+	    	<%= form.text_field :address, class: 'form-control' %>
 	    		
 	    	</div>
 
 		<div class="row form-block">
 			<div class="col-md-6">
 			<%= label_tag :state %>
-	    	<%= text_field_tag :state, "",class: 'form-control' %>
+	    	<%= form.text_field :state, class: 'form-control' %>
 			</div>
 			<div class="col-md-6">
 				<%= label_tag :country %>
-				<%= select_tag "country",options_from_collection_for_select(@countries, "alpha2", "name"), class: "form-control" %>
+				<%= form.select "country",options_from_collection_for_select(@countries, "alpha2", "name"), class: "form-control" %>
 
 			</div>
 	</div>
 	<br>
 	<div class="row form-block">
-		<%=  submit_tag "Complete Order", class: "btn btn-success col-md-6" %>	
+		<%=  form.submit "Complete Order", class: "btn btn-success col-md-6" %>	
 	</div>
 
 	<% end %>

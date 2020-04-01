@@ -35,20 +35,20 @@ class ApplicationController < ActionController::Base
     # end
 
     def only_admin
-      # render file: "#{Rails.root}/public/404.html", layout: false, status: 404 if session['user_id'].nil? or (session['user_id'].present? && session['user_id'].is_admin?)
-      puts "I say render by force naw!"
+      # # render file: "#{Rails.root}/public/404.html", layout: false, status: 404 if session['user_id'].nil? or (session['user_id'].present? && session['user_id'].is_admin?)
+      # puts "I say render by force naw!"
     end
 
   def current_user
     if session[:user_id]
-      @current_user ||= User.find(session[:user_id])
+      @current_user ||= User.find(session[:user_id]) or nil
     else
       @current_user = nil
     end
   end
 
   def is_user_admin?
-    User.exists?(id: session[:user_id], is_admin: true)
+     User.exists?(id: session[:user_id], is_admin: true)
   end
 
  

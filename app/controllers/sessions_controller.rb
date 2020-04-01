@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
   	user = User.find_by_email(params[:email])
   	if user && user.authenticate(params[:password])
-  		session[:user_id] = user_id
+  		session[:user_id] = user.id
       if session[:welcome_path].present?
         destinationpath = session[:welcome_path]
         session[:welcome_path] = nil

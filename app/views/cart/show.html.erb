@@ -42,14 +42,17 @@
 		</table>
 
 	</div>
+	
 	<div class="row" style="margin-top: 3%;">
 		<div class="col-md-6">
 				 <h4><%= link_to('Continue Shopping', products_path) %></h4>
 		</div>
+		<% if @current_cart.total_quantity > 0 %>
 		<div class="col-md-6 text-right">
 			<h4>Sub total: <%= number_to_currency(@cart.sub_total) %></h4><br>
 			<%= button_to('Checkout', checkout_path, class: "btn btn-success col-md-6") %>
 			
 		</div>
+		<% end %>
 
 	</div>

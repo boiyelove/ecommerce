@@ -55,12 +55,23 @@
             </div>
           </div>
         </div>
+
+
         
       </div>
       <% end.empty? and begin %>
           <h3 class="mx-auto">No Products Added Yet</h3>
       <% end %>
-
+    
 
     </div>
+            <br>
+          <div class="digg_pagination">
+          <div class="page_info">
+            <%= page_entries_info @posts %>
+          </div>
+          <%= will_paginate @products, :container => false %>
+        </div>
+
+
 

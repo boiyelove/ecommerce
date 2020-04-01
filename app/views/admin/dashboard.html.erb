@@ -5,17 +5,42 @@
 
 		<div class="col-md-8">
 			<h2>Admin Dashboard</h2>
-			<div class="row">
-				<div class="col-md-4">
-					<h2>54</h2><h6>Products</h6>
-				</div>
-				<div class="col-md-4"><h2>54</h2><h6>Users</h6></div>
-				<div class="col-md-4"><h2>54</h2><h6>Orders</h6></div>
-			</div>
+			<br>
 
 			<div class="row">
+				<div class="col-md-4">
+					<h2><%= @product_count %></h2><h6>Products</h6>
+				</div>
+				<div class="col-md-4"><h2><%= @user_count %></h2><h6>Users</h6></div>
+				<div class="col-md-4"><h2><%= @order_count %></h2><h6>Orders</h6></div>
+			</div>
+			<br>
+			<br>
+			<div class="row">
+				<div class="col-md-6">
+					<h6>User Registration</h6>
+					<%= column_chart User.group_by_month(:created_at, format: "%a").count %>
+				</div>
+				<div class="col-md-6">
+					<h6>Orders</h6>
+					<%= column_chart Order.group_by_day(:created_at, format: "%a").count %>
+				</div>
+			</div>
+			<br>
+			<div class="row">
 				<h3>World Domination</h3>
-				<h1>Map Here</h1>
+					<div id="map" style='width: 800px; height: 400px;'></div>
+				
 			</div>
 		</div>
 	</div>
+
+	<script type="text/javascript">
+ 
+	  handler = Gmaps.build('Google');
+	  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+	  markers = handler.addMarkers(<%=raw @locations.to_json %>);
+	  handler.bounds.extendWith(markers);
+	  handler.fitMapToBounds();
+	});
+	</script>

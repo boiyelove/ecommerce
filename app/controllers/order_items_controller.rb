@@ -1,6 +1,7 @@
 class OrderItemsController < ApplicationController
   before_action :set_order_item, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_admin, only: [:edit, :update, :destroy]
+  
   # GET /order_items
   # GET /order_items.json
   def index

@@ -1,15 +1,15 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /products
   # GET /products.json
   def index
     puts "admin_scope is #{params[:admin_scope]}"
     if params[:search]
       @parameter = params[:search].downcase
-      @products = Product.all.where("title like '%%#{@parameter}%%'")
+      @products = Product.all.where("title like '%%#{@parameter}%%'").paginate(page: params[:page], per_page: 100)
     else
-      @products = Product.all
+      @products = Product.paginate(page: params[:page], per_page: 100)
     end
     render "admin/products" if params[:admin_scope].eql? true
 

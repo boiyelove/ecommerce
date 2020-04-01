@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_30_230033) do
+ActiveRecord::Schema.define(version: 2020_04_01_141219) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_03_30_230033) do
   end
 
   create_table "payment_infos", force: :cascade do |t|
-    t.integer "card_number"
+    t.string "card_number"
     t.string "card_exp"
     t.integer "card_pin"
     t.integer "user_id", null: false
