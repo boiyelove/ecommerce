@@ -7,15 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # require 'faker'
 
+
 # Faker::Name.name
 # Faker::Internet.email
+# def genprice
+# 	rand * (500-1) + 1
+# end
 
-#create user
-#create product
-#create order items 
-# create payment info
-# create order
+# create product
+data = SmarterCSV.process(Rails.root.join("db", "productseed.csv"), {headers_in_file: true, user_provided_headers: %i[title description price]})
+data.each do |row|
+	Product.create!(row.to_hash)
+end
 
-# 1.upto(500) do |1|
-	
-# 	User.new(:firstname, :lastname, :email, :password, :password_confirmation)
+
+
