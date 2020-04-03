@@ -9,7 +9,7 @@
 			<h5>Orders</h5>
 			<div class="row">
 
-			<div class="accordion" id="accordionExample">
+			<div class="container" id="accordionExample">
       		<% @orders.each do |order| %>
       		<p class="row">
       			<h6 class="row">
@@ -20,7 +20,7 @@
       			<div class="col-md-4">
       				
       			</div>
-      			<div class="col-md-4">
+      			<div class="col-md-4 text-right">
       				<%=order.created_at.strftime("%d of %B, %Y") %>
       			</div>
       		</h6>
@@ -52,7 +52,10 @@
       			</div>
 			</p>
 				<br>
+                        <br>
 				<hr>
+                        <br>
+                        <br>
         	<% end %>
 					
 			</div>

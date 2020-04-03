@@ -18,14 +18,22 @@
 			<hr>
 			<br>
 			<div class="row">
-				<div class="col-md-6">
+				<h6>Orders</h6>
+				<%= line_chart Order.group_by_day(:created_at).count %>
+			</div>
+			<br>
+
+			<div class="row">
+
 					<h6>User Registration</h6>
 					<%= column_chart User.group_by_month(:created_at, format: "%a").count %>
-				</div>
-				<div class="col-md-6">
-					<h6>Orders</h6>
-					<%= column_chart Order.group_by_day(:created_at, format: "%a").count %>
-				</div>
+		
+
+			</div>
+			<br>
+			<div class="row">
+					<h6>Product Sale</h6>
+					<%= area_chart OrderItem.group(:product_id).sum(:quantity), xtitle: "product id", ytitle: "sold quantity" %>
 			</div>
 			<br>
 			<hr>
