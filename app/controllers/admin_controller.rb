@@ -10,7 +10,7 @@ class AdminController < ApplicationController
       next if paymentinfo.state.nil?
       # c =  ISO3166::Country.new(paymentinfo.country)
       c = Geocoder.search(paymentinfo.state)
-      puts 'C is ', c
+      puts 'C is ', c.first.coordinates[0], c.first.coordinates[1]
       marker.lat c.first.coordinates[0]
       marker.lng c.first.coordinates[1]
     end
