@@ -40,18 +40,30 @@
 			<br>
 			<div class="row">
 				<h6>World Domination</h6>
-					<div id="map" style='width: 800px; height: 400px;'></div>
+					<div style='width: 800px;'>
+  							<div id="map" style='width: 800px; height: 400px;'></div>
+							</div>
+							    
 				
 			</div>
 		</div>
 	</div>
 
-	<script type="text/javascript">
- 
-	  handler = Gmaps.build('Google');
-	  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-	  markers = handler.addMarkers(<%=raw @locations.to_json %>);
-	  handler.bounds.extendWith(markers);
-	  handler.fitMapToBounds();
-	});
-	</script>
+<script type="text/javascript">  
+handler = Gmaps.build('Google');  
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){  
+  markers = handler.addMarkers([  
+    {  
+      "lat": 37.3333945,  
+      "lng": -121.8806499,  
+      "picture": {  
+        "width":  32,  
+        "height": 32  
+      },  
+      "infowindow": "SJSU"  
+    }  
+  ]);  
+  handler.bounds.extendWith(markers);  
+  handler.fitMapToBounds();  
+});  
+</script>
