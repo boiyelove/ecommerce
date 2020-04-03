@@ -5,19 +5,15 @@
 
 	
 	<a href="/admin<%= products_path %>" class="list-group-item list-group-item-action">Products</a>
-	<a href="/admin<%= orders_path %>" class="list-group-item list-group-item-action">Orderss</a>
+	<a href="/admin<%= orders_path %>" class="list-group-item list-group-item-action">Orders</a>
 	<a href="/admin<%= users_path %>" class="list-group-item list-group-item-action">Users</a>
 	<a href="#" class="list-group-item list-group-item-action">Settings</a>
 	<%= link_to('Logout', logout_path, class: 'list-group-item list-group-item-action') %>
 
 <% else %>
-	<%= link_to('Dashboard', admin_dashboard_path, class: 'list-group-item list-group-item-action active') %>
+	<%= link_to('Dashboard', dashboard_path, class: 'list-group-item list-group-item-action active') %>
 
-	
-	<a href="/admin<%= products_path %>" class="list-group-item list-group-item-action">Products</a>
-	<a href="/admin<%= orders_path %>" class="list-group-item list-group-item-action">Orderss</a>
-	<a href="/admin<%= users_path %>" class="list-group-item list-group-item-action">Users</a>
-	<a href="#" class="list-group-item list-group-item-action">Settings</a>
+<!-- 	<a href="#" class="list-group-item list-group-item-action">Settings</a> -->
 	<%= link_to('Logout', logout_path, class: 'list-group-item list-group-item-action') %>
 
 

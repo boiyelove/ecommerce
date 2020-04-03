@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
   get 'admin/dashboard'
-  # get 'admin/products' => 'products#index'
+  get 'dashboard' => "products#dashboard", as: "dashboard"
 
   post 'checkout' => "cart#checkout", as: "checkout"
+  patch 'checkout' => "cart#checkout"
   get 'checkout' => "cart#show"
   get 'cart' => "cart#show", as: "cart"
   delete 'cart/:id' => "cart#destroy"
@@ -14,9 +15,7 @@ Rails.application.routes.draw do
   get 'order_items/:id' => "order_items#show", as: "order_item"
   delete 'order_items/:id' => "order_items#destroy"
   
-  # get 'sessions/new'
-  # get 'sessions/create'
-  # get 'sessions/destroy'
+
   resources :sessions, only: [:new, :create, :destroy]
 
   get 'register', to: 'users#new' , as: 'signup'
@@ -25,7 +24,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :orders
-  # resources :order_items
+
   resources :products
 
   root :to => 'products#index'

@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
         session[:welcome_path] = nil
         redirect_to destinationpath, notice: "You are now logged in"
   		end
-      redirect_to root_url, notice: "Logged in!"
+      redirect_to dashboard_url, notice: "Logged in!"
   	else
   		flash[:alert] = "Email or password is invalid"
       redirect_to login_path

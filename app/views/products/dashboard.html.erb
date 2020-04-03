@@ -1,0 +1,63 @@
+	<div class="row">
+		<div class="col-md-4">
+			<%= render 'shared/sidebar' %>
+		</div>
+
+		<div class="col-md-8">
+			<h2>Customer Dashboard</h2>
+			<br>
+			<h5>Orders</h5>
+			<div class="row">
+
+			<div class="accordion" id="accordionExample">
+      		<% @orders.each do |order| %>
+      		<p class="row">
+      			<h6 class="row">
+      			<div class="col-md-4">
+      				Order #<%= order.id %> 
+      				<br>Items: <%= order.total_quantity %> 
+      			</div>
+      			<div class="col-md-4">
+      				
+      			</div>
+      			<div class="col-md-4">
+      				<%=order.created_at.strftime("%d of %B, %Y") %>
+      			</div>
+      		</h6>
+      			<table class="table">
+      				<thead>
+      					<th scope="col">Product</th>
+      					<th scope="col">Quantity</th>
+      					<th scope="col">Sub Total</th>
+      				</thead>
+      				<tbody>
+      					<% order.order_items.each do |order_item| %>
+      					<tr scope="row">
+      						<td><%= order_item.product.title  %></td>
+      						<td>x<%= order_item.quantity  %></td>
+      						<td><%= order_item.total_price  %></td>
+      					</tr>
+      					<% end %>
+      				</tbody>
+      			</table>
+      			 <h6 class="row text-right">
+      			<div class="col-md-4">
+      				
+      			</div>
+      			<div class="col-md-4">
+      				   
+      			</div>
+      			<div class="col-md-4">
+      				Total: <%= order.sub_total %>
+      			</div>
+			</p>
+				<br>
+				<hr>
+        	<% end %>
+					
+			</div>
+
+			</div>
+		</div>
+	</div>
+

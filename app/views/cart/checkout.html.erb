@@ -21,15 +21,17 @@
 		<%= form_with model: @payinfo, local: true, url: checkout_path do |form| %>
 		<% if @payinfo.errors.any? %>
 	    <div id="error_explanation">
-	      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
-
+	      <h2><%= pluralize(@payinfo.errors.count, "error") %> prohibited this @payinfo from being saved:</h2>
+		
 	      <ul>
 	        <% user.errors.full_messages.each do |message| %>
 	          <li><%= message %></li>
 	        <% end %>
 	      </ul>
 	    </div>
+
 				  <% end %>
+				
 		<div class="row form-block">
 			    <%= label_tag :card_number %>
     			<%= form.text_field :card_number, class: 'form-control' %>
@@ -68,7 +70,7 @@
 	</div>
 	<br>
 	<div class="row form-block">
-		<%=  form.submit "Complete Order", class: "btn btn-success col-md-6" %>	
+		<%=  form.submit "Complete Order", class: "btn btn-success col-md-6", name: "checkout" %>	
 	</div>
 
 	<% end %>

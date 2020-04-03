@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_action :is_admin
+  # before_action :is_admin
 
   def dashboard
   	@product_count = Product.all.count

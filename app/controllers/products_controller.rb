@@ -1,10 +1,15 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+
   
   # GET /products
   # GET /products.json
+  def dashboard
+    user = User.find(@current_user.id) if logged_in?
+    @orders = Order.where(user_id: user.id) if logged_in?
+  end
+
   def index
-    puts "admin_scope is #{params[:admin_scope]}"
     if params[:search]
       @parameter = params[:search].downcase
       @products = Product.all.where("title like '%%#{@parameter}%%'").paginate(page: params[:page], per_page: 100)

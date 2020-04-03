@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :current_cart, only: [:create]
 
   # GET /orders
   # GET /orders.json
@@ -27,7 +28,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @current_cart.order_items.each do |item|
-      @oeswe.order_items << item
+      @order.order_items << item
       item.cart_id = nil
     end
     @order.save
