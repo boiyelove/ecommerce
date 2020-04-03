@@ -38,6 +38,17 @@
           <br>
 <!--       <%= link_to 'New Order', new_order_path %>
  -->
+           <br>
+          <div class="digg_pagination">
+          <div class="page_info">
+            <%= page_entries_info @orders %>
+          </div>
+          <%= will_paginate @orders, :container => false %>
+        </div>
+
+
+
+
         </div>
     </div>
 
