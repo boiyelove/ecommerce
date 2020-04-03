@@ -166,7 +166,7 @@
          <%= current_user.firstname %> 
       </li>
       <% if is_user_admin? %>
-      <%= link_to('Admin Dashboard', admin_dashboard_path, class: 'list-group-item list-group-item-action active') %>
+      <%= link_to('Admin Dashboard', admin_dashboard_path, class: 'nav-item text-white') %>
       <% end %>
       <li class="nav-item text-white">
          <%= link_to('Customer Dashboard', dashboard_path, class: "nav-link text-white") %>
