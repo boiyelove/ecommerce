@@ -6,12 +6,13 @@ class AdminController < ApplicationController
   	@order_count = Order.all.count
     @user_count = User.all.count
     @locations = Gmaps4rails.build_markers(PaymentInfo.paginate(page:1, per_page:100)) do |paymentinfo, marker|
-      puts 'PaymentInfo -> country is', paymentinfo.country
-      next if paymentinfo.country.nil?
-      c =  ISO3166::Country.new(paymentinfo.country)
+      puts 'PaymentInfo -> country is', paymentinfo.state
+      next if paymentinfo.state.nil?
+      # c =  ISO3166::Country.new(paymentinfo.country)
+      c = Geocoder.search(paymentinfo.state)
       puts 'C is ', c
-      marker.lat c.latitude_dec
-      marker.lng c.longitude_dec
+      marker.lat c.first.coordinates[0]
+      marker.lng c.first.coordinates[1]
     end
   end
 
