@@ -28,11 +28,11 @@ Things you may want to cover:
 
 
 1. Template
-   - [ ] Adin Dashobard add search box to product, order and user
-   - [ ] Adin Dashobard add date data to tables
-   - [ ] Adin Dashobard add date joined to user list
-   - [ ] Create customer dashboard html template
+   - [*] Add Dashobard add search box to product, order and user
+   - [*] Add Dashobard add date data to tables
+   - [*] Add Dashobard add date joined to user list
+   - [*] Create customer dashboard html template
 
 2. Wireframe
-   - [ ] Remove add order from wireframe
-   - [ ] Add order status
+   - [*] Remove add order from wireframe
+   - [] Add order status

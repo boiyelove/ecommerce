@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
   helper_method :is_user_admin?, :logged_in?, :current_user
   before_action :current_user
+  before_action :login_required, only: [:dashboard, :edit, :update, :destroy]
   # before_action :only_admin, only: [:edit, :update, :destroy]
 
 
@@ -48,10 +49,13 @@ class ApplicationController < ActionController::Base
       !!User.exists?(id: session[:user_id], is_admin: true) 
     end
 
-  # def auth_user
-  #   puts 'logged in is', logged_in?
-  #   redirect_to login_path, notice: "Please login to continue" if !logged_in?
-  # end
+  def login_required
+    redirect_to login_path, notice: "Please login to continue" unless logged_in?
+  end
+
+  def admin_required
+    redirect_to root_path, notice: "Administrative Privilege Required" unless is_user_admin?
+  end
   # def current_cart
   # 	if session[:cart]
   # 		@current_cart ||= session[:cart]

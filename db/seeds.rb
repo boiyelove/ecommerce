@@ -23,27 +23,27 @@ def rand_in_range(from, to)
   rand * (to - from) + from
 end
 
-# #create product
-# puts "Seeding products"
-# data = SmarterCSV.process(Rails.root.join("db", "productseed.csv"), {headers_in_file: true, user_provided_headers: %i[title description price]})
-# data.each do |row|
-# 	Product.create!(row.to_hash)
-# end
+#create product
+puts "Seeding products"
+data = SmarterCSV.process(Rails.root.join("db", "productseed.csv"), {headers_in_file: true, user_provided_headers: %i[title description price]})
+data.each do |row|
+	Product.create!(row.to_hash)
+end
 
 
-# # create user
-# puts "Seeding Users and payment information"
-# data = SmarterCSV.process(Rails.root.join("db", "customers.csv"), {headers_in_file: true, user_provided_headers: %i[customer_name cardnumber cvv expiry city]})
+# create user
+puts "Seeding Users and payment information"
+data = SmarterCSV.process(Rails.root.join("db", "customers.csv"), {headers_in_file: true, user_provided_headers: %i[customer_name cardnumber cvv expiry city]})
 
-# data.each do |row|
-# 	name = row[:customer_name].split(" ")
-# 	created_at = rand_time(90.days.ago)
-# 	email =  name.first + name.last + '@' + Faker::Internet.domain_name
-# 	user = User.new(firstname: name.first, lastname: name.last, email: email.downcase, password: "password1234", password_confirmation: "password1234", created_at: created_at)
-# 	user.save!
-# 	payinfo = PaymentInfo.create!(card_number: row[:cardnumber], card_pin: row[:cvv], card_exp: row[:expiry], address: Faker::Address.street_address, state: Faker::Address.state, country: Faker::Address.country_code, user: user, created_at: created_at)
-# 	payinfo.save!
-# end
+data.each do |row|
+	name = row[:customer_name].split(" ")
+	created_at = rand_time(90.days.ago)
+	email =  name.first + name.last + '@' + Faker::Internet.domain_name
+	user = User.new(firstname: name.first, lastname: name.last, email: email.downcase, password: "password1234", password_confirmation: "password1234", created_at: created_at)
+	user.save!
+	payinfo = PaymentInfo.create!(card_number: row[:cardnumber], card_pin: row[:cvv], card_exp: row[:expiry], address: Faker::Address.street_address, state: Faker::Address.state, country: Faker::Address.country_code, user: user, created_at: created_at)
+	payinfo.save!
+end
 
 
 puts "Seeding Orders"

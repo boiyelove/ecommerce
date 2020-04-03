@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  # before_action :is_admin
+  before_action :admin_required
 
   def dashboard
   	@product_count = Product.all.count
@@ -13,16 +13,6 @@ class AdminController < ApplicationController
       marker.lat c.latitude_dec
       marker.lng c.longitude_dec
     end
-  end
-
-
-  def is_admin
-    unless is_user_admin?
-    # if user is not logged in raise 404
-    # if user is logged in and user is not admin raise 404
-      render file: "#{Rails.root}/public/404.html", layout: false, status: 404
-    end
-
   end
 
 end
