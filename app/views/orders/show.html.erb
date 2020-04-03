@@ -1,9 +1,46 @@
-<p id="notice"><%= notice %></p>
+    <div class="row">
+      <div class="col-md-4">
+          <%= render "shared/sidebar" %>
+      </div>
 
-<p>
-  <strong>User:</strong>
-  <%= @order.user_id %>
-</p>
+        <div class="col-md-8">
+      <div class="jumbotron">
+      	<div class="row">
+			<div class="col-md-6">
+				<h6>
+					<%= @order.user.firstname + ' ' + @order.user.lastname %>
+					<br><%= @order.user.email %> </h6> Shipping Address:<br><%= @order.shipping_address %>
+		
+			</div>
+			<div class="col-md-6 text-right">
+				<h2>Total: <%= number_to_currency(@order.sub_total) %></h2>
+				<h6>Item(s): <%= @order.total_quantity %></h6>
+			</div>
+		</div>
 
+	</div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Product</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+        <% @order.order_items.each do |order_item| %>
+          <td scope="row"><%= order_item.id %></td>
+            <td><%= order_item.product.title %></td>
+            <td><%= order_item.quantity %></td>
+            <td>$<%= order_item.total_price %></td>
+          </tr>
+        <% end %>
+          </tr>
+                 
+        </tbody>
+      </table>
+          <br>
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

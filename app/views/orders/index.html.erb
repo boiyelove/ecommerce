@@ -22,10 +22,10 @@
           <tr>
         <% @orders.each do |order| %>
           <td scope="row"><%= order.id %></td>
-            <td><%= order.user_id %></td>
-            <td>johndoe@example.com</td>
-            <td>$543455</td>
-             <td>345</td>
+            <td><%= order.user.firstname + ' ' +  order.user.lastname %></td>
+            <td><%= order.user.email %></td>
+            <td>$<%= order.sub_total %></td>
+             <td>x<%= order.total_quantity %></td>
             <td>Delivered</td>
             <td><%= link_to 'Show', order %></td>
             <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
