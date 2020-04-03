@@ -1,2 +1,2 @@
-web: run rake db:setup
-web: bundle exec puma -C config/puma.rb 
+web: bundle exec puma -C config/puma.rb
+web: bundle exec rake db:setup
