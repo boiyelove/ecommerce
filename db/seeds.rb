@@ -75,6 +75,7 @@ payinfos.each do |payinfo|
 		 payinfo.latitude = state.first.coordinates[0]
 		 payinfo.longitude = state.first.coordinates[1]
 		 payinfo.save!
+	 end
 end
 
 puts "done!"
